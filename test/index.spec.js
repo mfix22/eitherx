@@ -1,6 +1,10 @@
 import React from 'react'
-import Eitherx from '../dist/eitherx.cjs.js'
 import renderer from 'react-test-renderer';
+
+// Hack to use `src` when running coverage
+const Eitherx = process.env.npm_package_scripts_test_coverage
+  ? require('../src').default
+  : require('../dist/eitherx.cjs.js')
 
 test('should throw if < 1 or > 2 children are passed', () => {
   expect(() => renderer.create(<Eitherx></Eitherx>))

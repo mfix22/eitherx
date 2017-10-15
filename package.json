@@ -7,7 +7,7 @@
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "build": "rollup --config",
-    "prepublish": "npm run build && npm test"
+    "prepublish": "npm run build && npm test -- --silent"
   },
   "keywords": [
     "error",

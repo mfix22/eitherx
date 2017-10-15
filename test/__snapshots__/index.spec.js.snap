@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render second component on error 1`] = `
+<p>
+  "Happy Child 😄"
+</p>
+`;
+
+exports[`should render second component on error 2`] = `
+<p>
+  "Error as child ☹️"
+</p>
+`;
+
+exports[`should return null if no error handler is passed, and error is thrown 1`] = `
+<p>
+  My Paragraph
+</p>
+`;
+
+exports[`should throw if < 1 or > 2 children are passed 1`] = `"Eitherx expects either 1 or 2 children. You passed 0 children"`;
+
+exports[`should throw if < 1 or > 2 children are passed 2`] = `"Eitherx expects either 1 or 2 children. You passed 3 children"`;
+
+exports[`should throw if render or handleErrors is not a function 1`] = `
+"
+ender\` and \`handleErrors\` must both be functions"
+`;
+
+exports[`should throw if render or handleErrors is not a function 2`] = `
+"
+ender\` and \`handleErrors\` must both be functions"
+`;
+
+exports[`should throw render is passed but not handleErrors 1`] = `"If \`render\` prop is passed, you must also pass a \`handleErrors\` callback"`;
+
+exports[`should work with render-catch props as well 1`] = `
+<p>
+  "Render Prop"
+</p>
+`;
+
+exports[`should work with render-catch props as well 2`] = `
+<p>
+  "Catch Prop"
+</p>
+`;

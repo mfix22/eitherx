@@ -1,0 +1,30 @@
+{
+  "name": "eitherx",
+  "version": "0.0.1",
+  "description": "Binary Error Boundary Component",
+  "main": "dist/eitherx.cjs.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "build": "rollup src/index.js --output.format cjs --output.file dist/eitherx.cjs.js",
+    "publish": "npm test && npm run build && npm publish"
+  },
+  "keywords": [
+    "error",
+    "boundaries",
+    "boundary",
+    "either"
+  ],
+  "author": "mfix22",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.0",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.0.0",
+    "rollup": "^0.50.0"
+  }
+}

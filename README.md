@@ -32,6 +32,8 @@ import Either from 'eitherx'
 ### Wrapper Component Style
 `Eitherx` either renders the first child component, unless an error occurred while rendering, then the second child is rendered. Easy enough 😄.
 
+If you do not pass a second child, and an error occurs, `null` will be return to React to render.
+
 ### Render-prop Style
 Using this style, you must pass a function for both `render` _and_ `handleErrors`. If an error occurs, the component
 returned from `handleErrors` will be rendered. Otherwise `Eitherx` will render the component returned from `render`.

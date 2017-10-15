@@ -1,5 +1,5 @@
 # `<EitheRx />`
-Super simple, reusable binary Error boundaries for React. Your go-to, prescribed, error-boundary helper
+Super simple, reusable binary [error boundaries][react-error-docs] for React. Your go-to, prescribed, error-boundary helper
 
 ## Usage
 ```shell
@@ -39,4 +39,7 @@ Using this style, you must pass a function for both `render` _and_ `handleErrors
 returned from `handleErrors` will be rendered. Otherwise `Eitherx` will render the component returned from `render`.
 
 The `handleErrors` function receives an object with the fields `error` and `info`, both of which are passed directly from
-[React Error Boundaries](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html#introducing-error-boundaries).
+[React Error Boundaries][react-error-docs-target].
+
+[react-error-docs]: https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
+[react-error-docs-target]: https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html#introducing-error-boundaries

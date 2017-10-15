@@ -1,5 +1,5 @@
 # `<EitheRx />`
-Super simple, reusable binary [error boundaries][react-error-docs] for React. Your go-to, prescribed, error-boundary helper
+Super simple, reusable binary [error boundaries][react-error-docs] for React. Your go-to, prescribed, error-boundary helper.
 
 ## Usage
 ```shell
@@ -11,7 +11,9 @@ import Either from 'eitherx'
 
 // Wrapper-component Style
 <Either>
+  {/* Either . . . */}
   <p>"Happy Child 😄"</p>
+  {/* Or . . . */}
   <p>"Error child ☹️ (but at least your UI is happy)"</p>
 </Either>
 

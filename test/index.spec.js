@@ -1,5 +1,5 @@
 import React from 'react'
-import Eitherx from '../src'
+import Eitherx from '../dist/eitherx.cjs.js'
 import renderer from 'react-test-renderer';
 
 test('should throw if < 1 or > 2 children are passed', () => {

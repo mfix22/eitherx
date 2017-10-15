@@ -5,9 +5,9 @@
   "main": "dist/eitherx.cjs.js",
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "build": "rollup src/index.js --output.format cjs --output.file dist/eitherx.cjs.js",
-    "prepublish": "npm test && npm run build"
+    "test:coverage": "npm test -- --coverage",
+    "build": "rollup --config",
+    "prepublish": "npm run build && npm test"
   },
   "keywords": [
     "error",
@@ -23,9 +23,12 @@
   "devDependencies": {
     "babel-jest": "^21.2.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0",
-    "rollup": "^0.50.0"
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-uglify": "^2.0.1"
   },
   "directories": {
     "test": "test"

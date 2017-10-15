@@ -13,7 +13,7 @@ test('should throw if < 1 or > 2 children are passed', () => {
     .toThrowErrorMatchingSnapshot()
 })
 
-test('should throw render is passed but not handleErrors', () => {
+test('should throw render is passed but not catchError', () => {
   expect(() => renderer.create(
     <Eitherx
       render={() => (<div/>)}
@@ -21,18 +21,18 @@ test('should throw render is passed but not handleErrors', () => {
   )).toThrowErrorMatchingSnapshot()
 })
 
-test('should throw if render or handleErrors is not a function', () => {
+test('should throw if render or catchError is not a function', () => {
   expect(() => renderer.create(
     <Eitherx
       render={() => (<div/>)}
-      handleErrors={"Not a function"}
+      catchError={"Not a function"}
     />
   )).toThrowErrorMatchingSnapshot()
 
   expect(() => renderer.create(
     <Eitherx
       render={"Not a function"}
-      handleErrors={() => (<div/>)}
+      catchError={() => (<div/>)}
     />
   )).toThrowErrorMatchingSnapshot()
 })
@@ -84,7 +84,7 @@ test('should work with render-catch props as well', () => {
   let component = renderer.create(
     <Eitherx
       render={() => (<p>"Render Prop"</p>)}
-      handleErrors={() => (<p>"Catch Prop"</p>)}
+      catchError={() => (<p>"Catch Prop"</p>)}
     />
   )
   expect(component.toJSON()).toMatchSnapshot();
@@ -92,7 +92,7 @@ test('should work with render-catch props as well', () => {
   component = renderer.create(
     <Eitherx
       render={() => (<ErrorComponent>"Render Prop"</ErrorComponent>)}
-      handleErrors={() => (<p>"Catch Prop"</p>)}
+      catchError={() => (<p>"Catch Prop"</p>)}
     />
   )
   expect(component.toJSON()).toMatchSnapshot();

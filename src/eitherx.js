@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CATCH = 'handleErrors'
+const CATCH = 'catchError'
 
 class Eitherx extends React.Component {
   constructor(props) {

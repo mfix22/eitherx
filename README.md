@@ -1,5 +1,5 @@
 # `<EitheRx />`
-Super simple, reusable binary [error boundaries][react-error-docs] for React. Your go-to, prescribed, error-boundary helper.
+:pill: Super simple, reusable binary [error boundaries][react-error-docs] for React. Your go-to, prescribed, error-boundary helper.
 
 ## Usage
 ```shell

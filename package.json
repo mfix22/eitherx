@@ -26,5 +26,16 @@
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0",
     "rollup": "^0.50.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfix22/eitherx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mfix22/eitherx/issues"
+  },
+  "homepage": "https://github.com/mfix22/eitherx#readme"
 }

@@ -1,6 +1,6 @@
 {
   "name": "eitherx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Binary Error Boundary Component",
   "main": "dist/eitherx.cjs.js",
   "scripts": {

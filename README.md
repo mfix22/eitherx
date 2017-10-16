@@ -45,3 +45,18 @@ The `catchError` function receives an object with the fields `error` and `info`,
 
 [react-error-docs]: https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
 [react-error-docs-target]: https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html#introducing-error-boundaries
+
+### Handling Errors
+With either style, you can pass an `handleError` callback prop to add additional error handling, logging, etc. This also allows you to
+filter certain errors by returning false from `handleError` as well.
+##### Example
+```javascript
+<Eitherx
+  handleError={({ error, info }) => {
+    console.log(info)
+    console.error(error)
+  }}
+  render={() => (<Component>"Render Prop"</Component>)}
+  catchError={() => (<p>"Catch Prop"</p>)}
+/>
+```

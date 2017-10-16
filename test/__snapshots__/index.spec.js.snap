@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should allow further error handling with \`handleError\` 1`] = `
+<p>
+  "Catch Prop"
+</p>
+`;
+
 exports[`should render second component on error 1`] = `
 <p>
   "Happy Child 😄"

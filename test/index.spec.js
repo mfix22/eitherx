@@ -97,3 +97,45 @@ test('should work with render-catch props as well', () => {
   )
   expect(component.toJSON()).toMatchSnapshot();
 })
+
+test('should allow further error handling with `handleError`', () => {
+  const handleError = jest.fn(() => true)
+
+  let errorThrown = false
+  class ErrorOnceComponent extends React.Component {
+    constructor(props) {
+      super(props)
+    }
+    render() {
+      if (errorThrown) {
+        errorThrown = true
+        throw new Error('Test Error')
+      }
+      return <p>"Good"</p>
+    }
+  }
+
+  let component = renderer.create(
+    <Eitherx
+      handleError={handleError}
+      render={() => (<ErrorComponent>"Render Prop"</ErrorComponent>)}
+      catchError={() => (<p>"Catch Prop"</p>)}
+    />
+  )
+
+  expect(handleError).toHaveBeenCalledWith(expect.objectContaining({
+    error: expect.any(Object),
+    info: expect.any(Object),
+  }))
+
+  expect(component).toMatchSnapshot()
+
+  component = renderer.create(
+    <Eitherx
+      handleError={() => false} // skip this error
+      render={() => (<ErrorComponent>Render Prop</ErrorComponent>)}
+      catchError={() => (<p>Catch Prop</p>)}
+    />
+  )
+  expect(component.toTree().instance.state.hasError).toEqual(false)
+})

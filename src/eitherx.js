@@ -22,8 +22,11 @@ class Eitherx extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: { error, info } });
+    // default to set state to true if `handleError` is not passed
+    const shouldSetState = !this.props.handleError || this.props.handleError({ error, info })
+    if (shouldSetState !== false) {
+      this.setState({ hasError: { error, info } });
+    }
   }
 
   render() {

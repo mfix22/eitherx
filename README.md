@@ -3,6 +3,7 @@
 
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![MIT License](https://img.shields.io/github/license/mfix22/eitherx.svg)](https://github.com/mfix22/eitherx/blob/master/LICENSE)
 ## Usage
 ```shell
 $ npm i --save eitherx

@@ -1,6 +1,6 @@
 {
   "name": "eitherx",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Binary Error Boundary Component",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",

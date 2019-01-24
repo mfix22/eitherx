@@ -1,40 +1,36 @@
 import React from 'react'
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
 
 // Hack to use `src` when running coverage
 const Eitherx = process.env.npm_package_scripts_test_coverage
   ? require('../src').default
-  : require('../dist/eitherx.cjs.js')
+  : require('../dist/index.js')
 
 test('should throw if < 1 or > 2 children are passed', () => {
-  expect(() => renderer.create(<Eitherx></Eitherx>))
-    .toThrowErrorMatchingSnapshot()
-  expect(() => renderer.create(<Eitherx><div/><div/><div/></Eitherx>))
-    .toThrowErrorMatchingSnapshot()
+  expect(() => renderer.create(<Eitherx />)).toThrowErrorMatchingSnapshot()
+  expect(() =>
+    renderer.create(
+      <Eitherx>
+        <div />
+        <div />
+        <div />
+      </Eitherx>
+    )
+  ).toThrowErrorMatchingSnapshot()
 })
 
 test('should throw render is passed but not catchError', () => {
-  expect(() => renderer.create(
-    <Eitherx
-      render={() => (<div/>)}
-    />
-  )).toThrowErrorMatchingSnapshot()
+  expect(() => renderer.create(<Eitherx render={() => <div />} />)).toThrowErrorMatchingSnapshot()
 })
 
 test('should throw if render or catchError is not a function', () => {
-  expect(() => renderer.create(
-    <Eitherx
-      render={() => (<div/>)}
-      catchError={"Not a function"}
-    />
-  )).toThrowErrorMatchingSnapshot()
+  expect(() =>
+    renderer.create(<Eitherx render={() => <div />} catchError={'Not a function'} />)
+  ).toThrowErrorMatchingSnapshot()
 
-  expect(() => renderer.create(
-    <Eitherx
-      render={"Not a function"}
-      catchError={() => (<div/>)}
-    />
-  )).toThrowErrorMatchingSnapshot()
+  expect(() =>
+    renderer.create(<Eitherx render={'Not a function'} catchError={() => <div />} />)
+  ).toThrowErrorMatchingSnapshot()
 })
 
 class ErrorComponent extends React.Component {
@@ -52,14 +48,14 @@ test('should return null if no error handler is passed, and error is thrown', ()
       <p>My Paragraph</p>
     </Eitherx>
   )
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(component.toJSON()).toMatchSnapshot()
 
   component = renderer.create(
     <Eitherx>
       <ErrorComponent>"My Error"</ErrorComponent>
     </Eitherx>
   )
-  expect(component.toJSON()).toEqual(null);
+  expect(component.toJSON()).toEqual(null)
 })
 
 test('should render second component on error', () => {
@@ -69,7 +65,7 @@ test('should render second component on error', () => {
       <p>"Error as child ☹️"</p>
     </Eitherx>
   )
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(component.toJSON()).toMatchSnapshot()
 
   component = renderer.create(
     <Eitherx>
@@ -77,65 +73,41 @@ test('should render second component on error', () => {
       <p>"Error as child ☹️"</p>
     </Eitherx>
   )
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(component.toJSON()).toMatchSnapshot()
 })
 
 test('should work with render-catch props as well', () => {
   let component = renderer.create(
-    <Eitherx
-      render={() => (<p>"Render Prop"</p>)}
-      catchError={() => (<p>"Catch Prop"</p>)}
-    />
+    <Eitherx render={() => <p>"Render Prop"</p>} catchError={() => <p>"Catch Prop"</p>} />
   )
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(component.toJSON()).toMatchSnapshot()
 
   component = renderer.create(
     <Eitherx
-      render={() => (<ErrorComponent>"Render Prop"</ErrorComponent>)}
-      catchError={() => (<p>"Catch Prop"</p>)}
+      render={() => <ErrorComponent>"Render Prop"</ErrorComponent>}
+      catchError={() => <p>"Catch Prop"</p>}
     />
   )
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(component.toJSON()).toMatchSnapshot()
 })
 
 test('should allow further error handling with `handleError`', () => {
   const handleError = jest.fn(() => true)
 
-  let errorThrown = false
-  class ErrorOnceComponent extends React.Component {
-    constructor(props) {
-      super(props)
-    }
-    render() {
-      if (errorThrown) {
-        errorThrown = true
-        throw new Error('Test Error')
-      }
-      return <p>"Good"</p>
-    }
-  }
-
   let component = renderer.create(
     <Eitherx
       handleError={handleError}
-      render={() => (<ErrorComponent>"Render Prop"</ErrorComponent>)}
-      catchError={() => (<p>"Catch Prop"</p>)}
+      render={() => <ErrorComponent>"Render Prop"</ErrorComponent>}
+      catchError={() => <p>"Catch Prop"</p>}
     />
   )
 
-  expect(handleError).toHaveBeenCalledWith(expect.objectContaining({
-    error: expect.any(Object),
-    info: expect.any(Object),
-  }))
+  expect(handleError).toHaveBeenCalledWith(
+    expect.objectContaining({
+      error: expect.any(Object),
+      info: expect.any(Object)
+    })
+  )
 
   expect(component).toMatchSnapshot()
-
-  component = renderer.create(
-    <Eitherx
-      handleError={() => false} // skip this error
-      render={() => (<ErrorComponent>Render Prop</ErrorComponent>)}
-      catchError={() => (<p>Catch Prop</p>)}
-    />
-  )
-  expect(component.toTree().instance.state.hasError).toEqual(false)
 })

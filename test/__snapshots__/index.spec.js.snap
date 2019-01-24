@@ -28,15 +28,9 @@ exports[`should throw if < 1 or > 2 children are passed 1`] = `"Eitherx expects 
 
 exports[`should throw if < 1 or > 2 children are passed 2`] = `"Eitherx expects either 1 or 2 children. You passed 3 children"`;
 
-exports[`should throw if render or catchError is not a function 1`] = `
-"
-ender\` and \`catchError\` must both be functions"
-`;
+exports[`should throw if render or catchError is not a function 1`] = `"\`render\` and \`catchError\` must both be functions"`;
 
-exports[`should throw if render or catchError is not a function 2`] = `
-"
-ender\` and \`catchError\` must both be functions"
-`;
+exports[`should throw if render or catchError is not a function 2`] = `"\`render\` and \`catchError\` must both be functions"`;
 
 exports[`should throw render is passed but not catchError 1`] = `"If \`render\` prop is passed, you must also pass a \`catchError\` callback"`;
 

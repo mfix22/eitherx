@@ -2,11 +2,13 @@
   "name": "eitherx",
   "version": "0.1.0",
   "description": "Binary Error Boundary Component",
-  "main": "dist/eitherx.cjs.js",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
   "scripts": {
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
-    "build": "rollup --config",
+    "build": "microbundle --name Eitherx --jsx React.createElement",
     "prepublish": "npm run build && npm test -- --silent"
   },
   "keywords": [
@@ -17,18 +19,19 @@
   ],
   "author": "mfix22",
   "license": "MIT",
-  "dependencies": {
-    "react": "^16.0.0"
+  "dependencies": {},
+  "peerDependencies": {
+    "react": ">16.0.0"
   },
   "devDependencies": {
-    "babel-jest": "^21.2.0",
+    "@babel/core": "^7.2.2",
+    "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "jest": "^21.2.1",
-    "react-test-renderer": "^16.0.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-uglify": "^2.0.1"
+    "microbundle": "^0.9.0",
+    "react": "latest",
+    "react-test-renderer": "^16.0.0"
   },
   "directories": {
     "test": "test"

@@ -93,12 +93,13 @@ test('should work with render-catch props as well', () => {
 
 test('should allow further error handling with `handleError`', () => {
   const handleError = jest.fn(() => true)
+  const catchError = jest.fn(() => <p>"Catch Prop"</p>)
 
   let component = renderer.create(
     <Eitherx
       handleError={handleError}
       render={() => <ErrorComponent>"Render Prop"</ErrorComponent>}
-      catchError={() => <p>"Catch Prop"</p>}
+      catchError={catchError}
     />
   )
 
@@ -106,6 +107,11 @@ test('should allow further error handling with `handleError`', () => {
     expect.objectContaining({
       error: expect.any(Object),
       info: expect.any(Object)
+    })
+  )
+  expect(catchError).toHaveBeenCalledWith(
+    expect.objectContaining({
+      error: expect.any(Object)
     })
   )
 

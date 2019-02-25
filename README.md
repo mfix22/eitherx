@@ -29,9 +29,8 @@ import Either from 'eitherx'
 // Render-prop Style
 <Either
   render={() => (<p>"Happy Child 😄"</p>)}
-  catchError={({ error, info }) => (
+  catchError={({ error }) => (
     <div>
-      <p>{`Info: ${info}`}</p>
       <p>{`Error: ${error}`}</p>
     </div>
   )}
@@ -49,7 +48,7 @@ If you do not pass a second child, and an error occurs, `null` will be return to
 Using this style, you must pass a function for both `render` _and_ `catchError`. If an error occurs, the component
 returned from `catchError` will be rendered. Otherwise `Eitherx` will render the component returned from `render`.
 
-The `catchError` function receives an object with the fields `error` and `info`, both of which are passed directly from
+The `catchError` function receives an object with the field `error` set, both of which are passed directly from
 [React Error Boundaries][react-error-docs-target].
 
 [react-error-docs]: https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
